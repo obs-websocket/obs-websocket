@@ -172,6 +172,7 @@ const std::unordered_map<std::string, RequestMethodHandler> RequestHandler::_han
 	{"StartStream", &RequestHandler::StartStream},
 	{"StopStream", &RequestHandler::StopStream},
 	{"SendStreamCaption", &RequestHandler::SendStreamCaption},
+	{"GetStreamScreenshot", &RequestHandler::GetStreamScreenshot},
 
 	// Record
 	{"GetRecordStatus", &RequestHandler::GetRecordStatus},

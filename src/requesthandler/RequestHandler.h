@@ -191,6 +191,7 @@ private:
 	RequestResult StartStream(const Request &);
 	RequestResult StopStream(const Request &);
 	RequestResult SendStreamCaption(const Request &);
+	RequestResult GetStreamScreenshot(const Request &request);
 
 	// Record
 	RequestResult GetRecordStatus(const Request &);
