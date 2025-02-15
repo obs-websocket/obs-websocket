@@ -485,3 +485,20 @@ RequestResult RequestHandler::SetOutputSettings(const Request &request)
 
 	return RequestResult::Success();
 }
+
+/**
+ * Saves a screenshot of a output to the filesystem.
+ *
+ * @requestType SaveOutputScreenshot
+ * @complexity 1
+ * @rpcVersion -1
+ * @initialVersion 5.2.3
+ * @api requests
+ * @category outputs
+ */
+RequestResult RequestHandler::SaveOutputScreenshot(const Request &)
+{
+    json responseData;
+    obs_frontend_take_screenshot();
+    return RequestResult::Success(responseData);
+}
