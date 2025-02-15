@@ -57,6 +57,7 @@ Here's a list of available language APIs for obs-websocket:
 - Go: [goobs](https://github.com/andreykaipov/goobs) by andreykaipov
 - Dart/Flutter (can target all supported platforms): [obs_websocket](https://github.com/faithoflifedev/obs_websocket) by faithoflifedev
 - Java: [obs-websocket-java](https://github.com/obs-websocket-community-projects/obs-websocket-java) by OBS Websocket Community
+- AutoHotKey: [OBSWebSocketAHK](https://github.com/5ony/OBSWebSocketAHK) by 5ony
 
 The 5.x server is a typical WebSocket server running by default on port 4455 (the port number can be changed in the Settings dialog under `Tools`).
 The protocol we use is documented in [PROTOCOL.md](docs/generated/protocol.md).
