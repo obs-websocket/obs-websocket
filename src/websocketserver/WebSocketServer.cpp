@@ -100,7 +100,10 @@ void WebSocketServer::Start()
 	_server.reset();
 
 	websocketpp::lib::error_code errorCode;
-	if (conf->Ipv4Only) {
+	if (conf->ServerHost != "") {
+		blog(LOG_INFO, "[WebSocketServer::Start] Locked to %s", conf->ServerHost);
+		_server.listen(conf->ServerHost, std::to_string(conf->ServerPort), errorCode);
+	} else if (conf->Ipv4Only) {
 		blog(LOG_INFO, "[WebSocketServer::Start] Locked to IPv4 bindings");
 		_server.listen(websocketpp::lib::asio::ip::tcp::v4(), conf->ServerPort, errorCode);
 	} else {

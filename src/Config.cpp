@@ -38,11 +38,13 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 #define PARAM_FIRSTLOAD "first_load"
 #define PARAM_ENABLED "server_enabled"
 #define PARAM_PORT "server_port"
+#define PARAM_HOST "server_host"
 #define PARAM_ALERTS "alerts_enabled"
 #define PARAM_AUTHREQUIRED "auth_required"
 #define PARAM_PASSWORD "server_password"
 
 #define CMDLINE_WEBSOCKET_PORT "websocket_port"
+#define CMDLINE_WEBSOCKET_HOST "websocket_host"
 #define CMDLINE_WEBSOCKET_IPV4_ONLY "websocket_ipv4_only"
 #define CMDLINE_WEBSOCKET_PASSWORD "websocket_password"
 #define CMDLINE_WEBSOCKET_DEBUG "websocket_debug"
@@ -72,6 +74,8 @@ void Config::Load(json config)
 		AuthRequired = config[PARAM_AUTHREQUIRED];
 	if (config.contains(PARAM_PASSWORD) && config[PARAM_PASSWORD].is_string())
 		ServerPassword = config[PARAM_PASSWORD];
+	if (config.contains(PARAM_HOST) && config[PARAM_HOST].is_string())
+		ServerHost = config[PARAM_HOST];
 
 	// Set server password and save it to the config before processing overrides,
 	// so that there is always a true configured password regardless of if
@@ -104,6 +108,17 @@ void Config::Load(json config)
 			blog(LOG_WARNING, "[Config::Load] Not overriding WebSocket port since integer conversion failed.");
 		}
 	}
+
+	// Process `--websocket_host` override
+	QString host_argument = Utils::Platform::GetCommandLineArgument(CMDLINE_WEBSOCKET_HOST);
+	if (host_argument != "") {
+		blog(LOG_INFO, "[Config::Load] --websocket_host passed. Overriding WebSocket host with: %s",
+		     host_argument.toStdString().c_str());
+		ServerHost = host_argument.toStdString();
+		HostOverridden = true;
+	}
+
+
 
 	// Process `--websocket_ipv4_only` override
 	if (Utils::Platform::GetCommandLineFlagSet(CMDLINE_WEBSOCKET_IPV4_ONLY)) {
@@ -139,6 +154,8 @@ void Config::Save()
 	config[PARAM_ENABLED] = ServerEnabled.load();
 	if (!PortOverridden)
 		config[PARAM_PORT] = ServerPort.load();
+	if (!HostOverridden)
+		config[PARAM_HOST] = ServerHost;
 	config[PARAM_ALERTS] = AlertsEnabled.load();
 	if (!PasswordOverridden) {
 		config[PARAM_AUTHREQUIRED] = AuthRequired.load();

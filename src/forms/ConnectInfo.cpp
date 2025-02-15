@@ -56,6 +56,8 @@ void ConnectInfo::RefreshData()
 	}
 
 	QString serverIp = QString::fromStdString(Utils::Platform::GetLocalAddress());
+	if (conf->ServerHost != "")
+		serverIp = QString::fromStdString(conf->ServerHost);
 	ui->serverIpLineEdit->setText(serverIp);
 
 	QString serverPort = QString::number(conf->ServerPort);
