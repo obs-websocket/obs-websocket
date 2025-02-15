@@ -305,6 +305,9 @@ void SettingsDialog::ShowConnectInfoButtonClicked()
 		}
 	}
 
+	// show connect info implies apply to prevent outdata data on a missed apply
+	SaveFormData();
+
 	connectInfo->show();
 	connectInfo->activateWindow();
 	connectInfo->raise();
