@@ -22,7 +22,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 namespace EventSubscription {
 	enum EventSubscription {
 		/**
-		* Subcription value used to disable all events.
+		* Subscription value used to disable all events.
 		*
 		* @enumIdentifier None
 		* @enumValue 0

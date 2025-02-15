@@ -79,7 +79,7 @@ void SettingsDialog::showEvent(QShowEvent *)
 {
 	auto conf = GetConfig();
 	if (!conf) {
-		blog(LOG_ERROR, "[SettingsDialog::showEvent] Unable to retreive config!");
+		blog(LOG_ERROR, "[SettingsDialog::showEvent] Unable to retrieve config!");
 		return;
 	}
 
@@ -119,7 +119,7 @@ void SettingsDialog::RefreshData()
 {
 	auto conf = GetConfig();
 	if (!conf) {
-		blog(LOG_ERROR, "[SettingsDialog::RefreshData] Unable to retreive config!");
+		blog(LOG_ERROR, "[SettingsDialog::RefreshData] Unable to retrieve config!");
 		return;
 	}
 
@@ -149,7 +149,7 @@ void SettingsDialog::SaveFormData()
 {
 	auto conf = GetConfig();
 	if (!conf) {
-		blog(LOG_ERROR, "[SettingsDialog::SaveFormData] Unable to retreive config!");
+		blog(LOG_ERROR, "[SettingsDialog::SaveFormData] Unable to retrieve config!");
 		return;
 	}
 

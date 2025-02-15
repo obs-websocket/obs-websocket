@@ -51,7 +51,7 @@ void ConnectInfo::RefreshData()
 {
 	auto conf = GetConfig();
 	if (!conf) {
-		blog(LOG_ERROR, "[ConnectInfo::showEvent] Unable to retreive config!");
+		blog(LOG_ERROR, "[ConnectInfo::showEvent] Unable to retrieve config!");
 		return;
 	}
 

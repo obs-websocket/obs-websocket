@@ -133,7 +133,7 @@ void EventHandler::HandleCurrentPreviewSceneChanged()
 {
 	OBSSourceAutoRelease currentPreviewScene = obs_frontend_get_current_preview_scene();
 
-	// This event may be called when OBS is not in studio mode, however retreiving the source while not in studio mode will return null.
+	// This event may be called when OBS is not in studio mode, however retrieving the source while not in studio mode will return null.
 	if (!currentPreviewScene)
 		return;
 

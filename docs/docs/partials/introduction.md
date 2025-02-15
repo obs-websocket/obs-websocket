@@ -32,7 +32,7 @@ obs-websocket provides a feature-rich RPC communication protocol, giving access 
 - Abstraction of identification, events, requests, and batch requests into dedicated message types
 - Conformity of request naming using similar terms like `Get`, `Set`, `Get[x]List`, `Start[x]`, `Toggle[x]`
 - Conformity of OBS data field names like `sourceName`, `sourceKind`, `sourceType`, `sceneName`, `sceneItemName`
-- Error code response system - integer corrosponds to type of error, with optional comment
+- Error code response system - integer corresponds to type of error, with optional comment
 - Possible support for multiple message encoding options: JSON and MessagePack
 - PubSub system - Allow clients to specify which events they do or don't want to receive from OBS
 - RPC versioning - Client and server negotiate the latest version of the obs-websocket protocol to communicate with.
@@ -260,7 +260,7 @@ Authentication is not required
 
 - Sent from: obs-websocket
 - Sent to: All subscribed and identified clients
-- Description: An event coming from OBS has occured. Eg scene switched, source muted.
+- Description: An event coming from OBS has occurred. Eg scene switched, source muted.
 
 **Data Keys:**
 

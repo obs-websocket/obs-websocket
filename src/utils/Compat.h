@@ -24,7 +24,7 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 
 namespace Utils {
 	namespace Compat {
-		// Reimplement QRunnable for std::function. Retrocompatability for Qt < 5.15
+		// Reimplement QRunnable for std::function. Retrocompatibility for Qt < 5.15
 		class StdFunctionRunnable : public QRunnable {
 			std::function<void()> cb;
 

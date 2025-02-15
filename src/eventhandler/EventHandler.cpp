@@ -500,7 +500,7 @@ void EventHandler::SourceCreatedMultiHandler(void *param, calldata_t *data)
 	}
 }
 
-// Only called for destruction of a public sourcs
+// Only called for destruction of a public source
 // Used as a fallback if an input/scene is not explicitly removed
 void EventHandler::SourceDestroyedMultiHandler(void *param, calldata_t *data)
 {

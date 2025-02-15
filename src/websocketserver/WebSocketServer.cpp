@@ -78,7 +78,7 @@ void WebSocketServer::Start()
 
 	auto conf = GetConfig();
 	if (!conf) {
-		blog(LOG_ERROR, "[WebSocketServer::Start] Unable to retreive config!");
+		blog(LOG_ERROR, "[WebSocketServer::Start] Unable to retrieve config!");
 		return;
 	}
 
@@ -222,7 +222,7 @@ void WebSocketServer::onOpen(websocketpp::connection_hdl hdl)
 
 	auto conf = GetConfig();
 	if (!conf) {
-		blog(LOG_ERROR, "[WebSocketServer::onOpen] Unable to retreive config!");
+		blog(LOG_ERROR, "[WebSocketServer::onOpen] Unable to retrieve config!");
 		return;
 	}
 
@@ -331,7 +331,7 @@ void WebSocketServer::onClose(websocketpp::connection_hdl hdl)
 	// Get config for tray notification
 	auto conf = GetConfig();
 	if (!conf) {
-		blog(LOG_ERROR, "[WebSocketServer::onClose] Unable to retreive config!");
+		blog(LOG_ERROR, "[WebSocketServer::onClose] Unable to retrieve config!");
 		return;
 	}
 
