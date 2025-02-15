@@ -199,6 +199,7 @@ std::vector<json> Utils::Obs::ArrayHelper::GetInputList(std::string inputKind)
 		inputJson["inputName"] = obs_source_get_name(input);
 		inputJson["inputUuid"] = obs_source_get_uuid(input);
 		inputJson["inputKind"] = inputKind;
+		inputJson["inputActive"] = obs_source_active(input);
 		inputJson["unversionedInputKind"] = obs_source_get_unversioned_id(input);
 		inputJson["inputKindCaps"] = obs_source_get_output_flags(input);
 
