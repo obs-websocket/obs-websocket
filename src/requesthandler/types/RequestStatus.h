@@ -415,5 +415,16 @@ namespace RequestStatus {
 		* @api enums
 		*/
 		CannotAct = 703,
+		/**
+		 * Assertion failed.
+		 *
+		 * @enumIdentifier AssertFailed
+		 * @enumValue 704
+		 * @enumType RequestStatus
+		 * @rpcVersion -1
+		 * @initialVersion 5.4.0
+		 * @api enums
+		 */
+		AssertFailed = 704,
 	};
 }

@@ -339,7 +339,9 @@ RequestResult RequestHandler::TriggerHotkeyByKeySequence(const Request &request)
 }
 
 /**
- * Sleeps for a time duration or number of frames. Only available in request batches with types `SERIAL_REALTIME` or `SERIAL_FRAME`.
+ * Sleeps for a time duration or number of frames.
+ *
+ * Note: Only available in request batches with types `SERIAL_REALTIME` or `SERIAL_FRAME`.
  *
  * @requestField ?sleepMillis | Number | Number of milliseconds to sleep for (if `SERIAL_REALTIME` mode) | >= 0, <= 50000
  * @requestField ?sleepFrames | Number | Number of frames to sleep for (if `SERIAL_FRAME` mode) | >= 0, <= 10000
@@ -371,4 +373,64 @@ RequestResult RequestHandler::Sleep(const Request &request)
 	} else {
 		return RequestResult::Error(RequestStatus::UnsupportedRequestBatchExecutionType);
 	}
+}
+
+/**
+ * Compares the values of the two request fields, `left` and `right`.
+ *
+ * Note: Only available in request batches with types `SERIAL_REALTIME` or `SERIAL_FRAME`.
+ *
+ * @requestField left  | Any | First request batch variable in comparison
+ * @requestField right | Any | Second request batch variable in comparison
+ *
+ * @responseField result | Boolean | Whether the comparison is equal
+ *
+ * @requestType Compare
+ * @complexity 4
+ * @rpcVersion -1
+ * @initialVersion 5.4.0
+ * @category general
+ * @api requests
+ */
+RequestResult RequestHandler::Compare(const Request &request)
+{
+	if (!request.RequestData.contains("left") || !request.RequestData.contains("right"))
+		return RequestResult::Error(RequestStatus::MissingRequestField, "One or more sides of the comparison are missing.");
+
+	bool result = request.RequestData["left"] == request.RequestData["right"];
+
+	json responseData;
+	responseData["result"] = result;
+	return RequestResult::Success(responseData);
+}
+
+
+/**
+ * Returns an error if the value of `check` is not `true`.
+ *
+ * This can be useful to interrupt a request batch from proceeding if an assumed state does not match real-world state.
+ *
+ * Note: Only available in request batches with types `SERIAL_REALTIME` or `SERIAL_FRAME`.
+ *
+ * @requestField check | Boolean | Value to assert to be true
+ *
+ * @requestType Assert
+ * @complexity 4
+ * @rpcVersion -1
+ * @initialVersion 5.4.0
+ * @category general
+ * @api requests
+ */
+RequestResult RequestHandler::Assert(const Request &request)
+{
+	RequestStatus::RequestStatus statusCode;
+	std::string comment;
+	if (!request.ValidateBoolean("check", statusCode, comment))
+		return RequestResult::Error(statusCode, comment);
+
+	bool check = request.RequestData["check"];
+	if (!check)
+		return RequestResult::Error(RequestStatus::AssertFailed, "Assertion failed.");
+
+	return RequestResult::Success();
 }

@@ -52,6 +52,8 @@ private:
 	RequestResult TriggerHotkeyByName(const Request &);
 	RequestResult TriggerHotkeyByKeySequence(const Request &);
 	RequestResult Sleep(const Request &);
+	RequestResult Compare(const Request &);
+	RequestResult Assert(const Request &);
 
 	// Config
 	RequestResult GetPersistentData(const Request &);

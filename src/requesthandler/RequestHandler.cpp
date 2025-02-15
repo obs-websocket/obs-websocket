@@ -33,6 +33,8 @@ const std::unordered_map<std::string, RequestMethodHandler> RequestHandler::_han
 	{"TriggerHotkeyByName", &RequestHandler::TriggerHotkeyByName},
 	{"TriggerHotkeyByKeySequence", &RequestHandler::TriggerHotkeyByKeySequence},
 	{"Sleep", &RequestHandler::Sleep},
+	{"Compare", &RequestHandler::Compare},
+	{"Assert", &RequestHandler::Assert},
 
 	// Config
 	{"GetPersistentData", &RequestHandler::GetPersistentData},
