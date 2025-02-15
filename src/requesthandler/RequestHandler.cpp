@@ -138,6 +138,7 @@ const std::unordered_map<std::string, RequestMethodHandler> RequestHandler::_han
 	{"SetSceneItemTransform", &RequestHandler::SetSceneItemTransform},
 	{"GetSceneItemEnabled", &RequestHandler::GetSceneItemEnabled},
 	{"SetSceneItemEnabled", &RequestHandler::SetSceneItemEnabled},
+	{"ToggleSceneItemEnabled", &RequestHandler::ToggleSceneItemEnabled},
 	{"GetSceneItemLocked", &RequestHandler::GetSceneItemLocked},
 	{"SetSceneItemLocked", &RequestHandler::SetSceneItemLocked},
 	{"GetSceneItemIndex", &RequestHandler::GetSceneItemIndex},

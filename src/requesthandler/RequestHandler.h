@@ -157,6 +157,7 @@ private:
 	RequestResult SetSceneItemTransform(const Request &);
 	RequestResult GetSceneItemEnabled(const Request &);
 	RequestResult SetSceneItemEnabled(const Request &);
+	RequestResult ToggleSceneItemEnabled(const Request &);
 	RequestResult GetSceneItemLocked(const Request &);
 	RequestResult SetSceneItemLocked(const Request &);
 	RequestResult GetSceneItemIndex(const Request &);

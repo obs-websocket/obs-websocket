@@ -588,6 +588,40 @@ RequestResult RequestHandler::SetSceneItemEnabled(const Request &request)
 }
 
 /**
+ * Toggles the enable state of a scene item.
+ *
+ * Scenes and Groups
+ *
+ * @requestField sceneName        | String  | Name of the scene the item is in
+ * @requestField sceneItemId      | Number  | Numeric ID of the scene item | >= 0
+ * 
+ * @responseField sceneItemEnabled | Boolean | Whether the scene item has been enabled. `true` for enabled, `false` for disabled
+ *
+ * @requestType ToggleSceneItemEnabled
+ * @complexity 2
+ * @rpcVersion -1
+ * @initialVersion 5.3.0
+ * @api requests
+ * @category scene items
+ */
+RequestResult RequestHandler::ToggleSceneItemEnabled(const Request &request)
+{
+	RequestStatus::RequestStatus statusCode;
+	std::string comment;
+	OBSSceneItemAutoRelease sceneItem = request.ValidateSceneItem("sceneName", "sceneItemId", statusCode, comment,
+								      OBS_WEBSOCKET_SCENE_FILTER_SCENE_OR_GROUP);
+	if (!sceneItem)
+		return RequestResult::Error(statusCode, comment);
+
+	bool sceneItemEnabled = !obs_sceneitem_visible(sceneItem);
+	obs_sceneitem_set_visible(sceneItem, sceneItemEnabled);
+
+	json responseData;
+	responseData["sceneItemEnabled"] = sceneItemEnabled;
+	return RequestResult::Success(responseData);
+}
+
+/**
  * Gets the lock state of a scene item.
  *
  * Scenes and Groups
