@@ -210,6 +210,7 @@ private:
 	RequestResult TriggerMediaInputAction(const Request &);
 
 	// Ui
+	RequestResult CloseMainWindow(const Request &);
 	RequestResult GetStudioModeEnabled(const Request &);
 	RequestResult SetStudioModeEnabled(const Request &);
 	RequestResult OpenInputPropertiesDialog(const Request &);

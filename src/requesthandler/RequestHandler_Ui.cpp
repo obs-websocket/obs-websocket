@@ -25,6 +25,22 @@ with this program. If not, see <https://www.gnu.org/licenses/>
 #include "RequestHandler.h"
 
 /**
+ * Closes the main window.
+ *
+ * @requestType CloseMainWindow
+ * @complexity 1
+ * @rpcVersion -1
+ * @initialVersion 5.0.0
+ * @category ui
+ * @api requests
+ */
+RequestResult RequestHandler::CloseMainWindow(const Request &)
+{
+	obs_frontend_close_main_window();
+	return RequestResult::Success();
+}
+
+/**
  * Gets whether studio is enabled.
  *
  * @responseField studioModeEnabled | Boolean | Whether studio mode is enabled
